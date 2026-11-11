@@ -22,8 +22,8 @@ export default async function AdminDashboard() {
     supabase.from('exam_attempts').select('*', { count: 'exact' }).gte('score', 7),
     supabase
       .from('exam_attempts')
-      .select('id, score, status, created_at, profiles(full_name, id), exams(title)')
-      .order('created_at', { ascending: false })
+      .select('id, score, status, started_at, profiles(full_name, id), exams(title)')
+      .order('started_at', { ascending: false })
       .limit(5)
   ])
 
@@ -116,7 +116,7 @@ export default async function AdminDashboard() {
                         {!isCompleted && <span className="px-2 py-0.5 text-[10px] uppercase font-bold bg-amber-100 text-amber-700 rounded-full">Fazendo Agora</span>}
                       </div>
                       <p className="text-sm text-slate-600 mt-1">{exams?.title}</p>
-                      <p className="text-xs text-slate-400 mt-1">{new Date(attempt.created_at).toLocaleString('pt-BR')}</p>
+                      <p className="text-xs text-slate-400 mt-1">{new Date(attempt.started_at).toLocaleString('pt-BR')}</p>
                     </div>
                     
                     {isCompleted && (

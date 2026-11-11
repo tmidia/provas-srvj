@@ -319,7 +319,9 @@ export function CertificateClient({ studentName, courseTitle, hours, completionD
           </div>
 
           {/* Signatures Container */}
-          <div className="absolute bottom-28 w-full px-24 flex justify-between items-end z-20">
+          {/* items-start: a coluna do aluno nao tem a linha do cargo; alinhando
+              pela base, a linha de assinatura dela ficava mais baixa que as outras. */}
+          <div className="absolute bottom-28 w-full px-24 flex justify-between items-start z-20">
             <div className="flex flex-col items-center w-64">
               <div className="w-full border-b border-slate-800 h-24 relative flex justify-center items-end pb-1">
                 {settings?.signature_1_url ? (
